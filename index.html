@@ -1,1 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c35">
+  <meta name="description" content="Chhatrapati Gramvikas Bahuuddeshiya Sanstha (CGBS), Pune, Maharashtra — community development, youth participation, education, health, skills and inclusion.">
+  <title>CGBS | Community, Opportunity &amp; Progress</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #123c35;
+      --forest-deep: #0c2d28;
+      --green: #2a715d;
+      --gold: #d7a84c;
+      --cream: #f7f5ef;
+      --ink: #1d2c28;
+      --muted: #64716c;
+      --white: #fff;
+      --line: #e4e6df;
+      --shadow: 0 18px 55px rgb(22 53 44 / 10%);
+      --radius: 22px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; color: var(--ink); background: var(--cream); line-height: 1.6; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; }
+    .skip-link {
+      position: fixed; left: 12px; top: -60px; z-index: 99;
+      padding: 10px 14px; background: var(--white); color: var(--forest);
+    }
+    .skip-link:focus { top: 12px; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 94%);
+      border-bottom: 1px solid var(--line); backdrop-filter: blur(12px);
+    }
+    .nav-row { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .wordmark { text-decoration: none; font-weight: 850; letter-spacing: .04em; color: var(--forest); }
+    .wordmark small { display: block; color: var(--muted); font-weight: 550; letter-spacing: 0; font-size: .68rem; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      text-decoration: none; padding: 10px 12px; border-radius: 999px;
+      font-size: .82rem; font-weight: 750; color: var(--forest);
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { background: #e8efe9; }
+    .menu-toggle {
+      display: none; border: 1px solid var(--line); background: var(--white);
+      color: var(--forest); border-radius: 10px; padding: 8px 12px; font-weight: 750;
+    }
+    .hero {
+      overflow: hidden; position: relative; color: var(--white);
+      background:
+        radial-gradient(ellipse at 50% 35%, rgb(64 121 95 / 55%), transparent 48%),
+        linear-gradient(135deg, var(--forest-deep), #174a3e 65%, #1c5947);
+      padding: 76px 0 86px;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 580px; height: 580px; border-radius: 50%;
+      border: 1px solid rgb(255 255 255 / 10%); left: 50%; top: 50%;
+      transform: translate(-50%, -40%); pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 800; color: var(--gold); }
+    h1 { font-size: clamp(2.15rem, 5vw, 4.7rem); line-height: 1.04; letter-spacing: -.045em; margin: 13px auto 16px; max-width: 850px; }
+    .hero-copy { max-width: 670px; margin: 0 auto; color: rgb(255 255 255 / 82%); font-size: clamp(1rem, 2vw, 1.18rem); }
+    .hero-stage { width: min(460px, 88vw); height: 340px; margin: 20px auto 18px; position: relative; display: grid; place-items: center; }
+    .orbit {
+      width: 248px; height: 248px; border: 1px solid rgb(255 255 255 / 36%);
+      border-radius: 50%; position: absolute; animation: orbit 24s linear infinite;
+    }
+    .earth {
+      position: absolute; width: 47px; height: 47px; left: 50%; top: -24px;
+      border-radius: 50%; transform: translateX(-50%);
+      background:
+        radial-gradient(ellipse at 32% 30%, #a9d8a6 0 8%, transparent 9%),
+        radial-gradient(ellipse at 63% 55%, #78b981 0 14%, transparent 15%),
+        radial-gradient(circle at 35% 35%, #b4e3ec, #267da0 62%, #124b6b);
+      box-shadow: 0 0 24px rgb(137 216 218 / 55%);
+    }
+    .logo-halo {
+      position: absolute; width: 214px; height: 214px; border-radius: 50%;
+      border: 1px solid rgb(255 255 255 / 13%); box-shadow: 0 0 60px rgb(255 255 255 / 10%);
+    }
+    .hero-logo {
+      position: relative; z-index: 2; width: 174px; height: 174px; object-fit: contain;
+      background: #fff; padding: 9px; border-radius: 50%;
+      box-shadow: 0 15px 44px rgb(0 0 0 / 24%);
+      animation: logo-float 5s ease-in-out infinite;
+    }
+    .umbrella { position: absolute; z-index: 3; right: 12%; top: 27px; width: 70px; opacity: .8; animation: umbrella-drift 6s ease-in-out infinite; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid rgb(255 255 255 / 35%); border-radius: 999px; padding: 12px 18px;
+      color: var(--white); background: rgb(255 255 255 / 9%); text-decoration: none; font-weight: 750;
+    }
+    .pill.primary { background: var(--gold); border-color: var(--gold); color: #1f2c23; }
+    .pill:hover { transform: translateY(-2px); }
+    .section { padding: 82px 0; }
+    .section.white { background: var(--white); }
+    .section.dark { color: var(--white); background: var(--forest); }
+    .section-head { max-width: 720px; margin-bottom: 32px; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .kicker { color: var(--green); font-size: .72rem; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .dark .kicker { color: #efd18c; }
+    h2 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.035em; margin: 8px 0 12px; }
+    h3 { margin: 0 0 8px; line-height: 1.25; }
+    .lead { color: var(--muted); font-size: 1.05rem; margin: 0; }
+    .dark .lead { color: rgb(255 255 255 / 76%); }
+    .nav-cards, .card-grid, .glance-grid, .initiative-grid { display: grid; gap: 16px; }
+    .nav-cards { grid-template-columns: repeat(4, 1fr); }
+    .nav-card {
+      display: block; text-decoration: none; color: var(--white); padding: 23px;
+      min-height: 158px; border-radius: var(--radius); background: #19493e;
+      border: 1px solid rgb(255 255 255 / 13%); transition: transform .2s, background .2s;
+    }
+    .nav-card:hover { transform: translateY(-4px); background: #215a49; }
+    .nav-card span { display: block; color: #efd18c; font-size: .74rem; font-weight: 800; letter-spacing: .12em; }
+    .nav-card h3 { margin-top: 18px; font-size: 1.15rem; }
+    .nav-card p { margin: 0; color: rgb(255 255 255 / 72%); font-size: .9rem; }
+    .glance-grid { grid-template-columns: repeat(4, 1fr); }
+    .glance-item { padding: 22px; background: #f4f6f1; border-radius: 17px; border: 1px solid #e8ebe4; }
+    .glance-item strong { display: block; font-size: 1.08rem; color: var(--forest); margin-bottom: 4px; }
+    .glance-item p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .panel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: start; }
+    .panel {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 24px; box-shadow: 0 8px 28px rgb(22 53 44 / 4%);
+    }
+    .panel p { color: var(--muted); }
+    .submenu { list-style: none; display: flex; flex-wrap: wrap; gap: 9px; padding: 0; margin: 16px 0 0; }
+    .submenu a { display: inline-block; padding: 8px 12px; border-radius: 999px; background: #eef3ee; color: var(--forest); text-decoration: none; font-size: .86rem; font-weight: 700; }
+    .submenu a:hover { background: #dce9df; }
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .feature-card { border: 1px solid var(--line); background: var(--white); border-radius: 17px; padding: 20px; }
+    .feature-card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .tag { display: inline-block; margin-bottom: 12px; color: var(--green); font-size: .7rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .photo-placeholder {
+      min-height: 220px; display: grid; place-items: center; text-align: center; padding: 20px;
+      border: 1px dashed #9caea2; border-radius: 18px;
+      background: linear-gradient(145deg, #e6eee6, #dce7e1 55%, #f0eadc);
+      color: #426457;
+    }
+    .photo-placeholder span { display: block; font-size: 2rem; margin-bottom: 6px; }
+    .photo-placeholder small { display: block; color: #64776d; }
+    .initiatives { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .initiative {
+      padding: 27px; border-radius: var(--radius); background: var(--white);
+      border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .initiative .number { color: var(--gold); font-weight: 900; font-size: .78rem; letter-spacing: .12em; }
+    .initiative p { color: var(--muted); }
+    .initiative a { color: var(--green); font-weight: 800; text-decoration-thickness: 1px; }
+    .details-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    details { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 15px 17px; }
+    summary { cursor: pointer; color: var(--forest); font-weight: 760; }
+    details p { margin-bottom: 0; color: var(--muted); }
+    .form-box { max-width: 760px; padding: 26px; border-radius: var(--radius); background: #f7f8f4; border: 1px solid var(--line); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; font-size: .88rem; font-weight: 750; color: var(--forest); }
+    input, select, textarea { width: 100%; margin-top: 5px; padding: 11px 12px; border-radius: 10px; border: 1px solid #cbd4cc; background: var(--white); color: var(--ink); }
+    textarea { min-height: 100px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
+    .form-note { color: var(--muted); font-size: .85rem; }
+    .submit {
+      border: 0; border-radius: 999px; background: var(--forest); color: var(--white);
+      padding: 12px 18px; font-weight: 800;
+    }
+    .form-status { min-height: 1.5em; color: var(--green); font-weight: 750; }
+    .footer { padding: 35px 0; background: var(--forest-deep); color: rgb(255 255 255 / 82%); }
+    .footer-row { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    .footer p { margin: 4px 0; font-size: .88rem; }
+    .footer a { color: #f0d48e; }
+    .floaters { position: fixed; z-index: 25; right: 16px; bottom: 16px; display: grid; gap: 9px; }
+    .floaters button, .floaters a {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; border-radius: 999px; padding: 11px 15px; text-decoration: none;
+      color: var(--white); background: var(--forest); box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+      font-weight: 800; font-size: .82rem;
+    }
+    .floaters .donate { background: #bd8430; color: #fff; }
+    dialog { width: min(480px, calc(100% - 30px)); border: 0; padding: 26px; border-radius: 18px; box-shadow: 0 20px 70px rgb(0 0 0 / 25%); }
+    dialog::backdrop { background: rgb(9 29 24 / 65%); }
+    dialog p { color: var(--muted); }
+    .dialog-close { border: 0; background: var(--forest); color: white; padding: 10px 16px; border-radius: 999px; font-weight: 750; }
+    :focus-visible { outline: 3px solid #d59d39; outline-offset: 3px; }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes logo-float { 50% { transform: translateY(-7px); } }
+    @keyframes umbrella-drift { 50% { transform: translate(4px, -7px) rotate(4deg); } }
+    @media (max-width: 850px) {
+      .nav-cards, .glance-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 0; }
+      .nav-links a { padding-inline: 8px; font-size: .75rem; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 72px; }
+      .wrap { width: min(100% - 30px, 1160px); }
+      .nav-row { min-height: 64px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 10px 15px 15px;
+        background: var(--white); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: grid; }
+      .nav-links a { padding: 12px; font-size: .9rem; }
+      .hero { padding: 55px 0 66px; }
+      .hero-stage { height: 290px; }
+      .orbit { width: 210px; height: 210px; }
+      .logo-halo { width: 184px; height: 184px; }
+      .hero-logo { width: 150px; height: 150px; }
+      .umbrella { right: 3%; top: 14px; width: 58px; }
+      .section { padding: 62px 0; }
+      .panel-grid, .initiatives, .details-list { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .photo-placeholder { min-height: 160px; }
+      .footer-row { display: block; }
+      .form-grid { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      .floaters { right: 10px; bottom: 10px; }
+      .floaters button, .floaters a { padding: 10px 12px; font-size: .76rem; }
+    }
+    @media (max-width: 400px) {
+      .nav-cards, .glance-grid, .card-grid, .gallery { grid-template-columns: 1fr; }
+      .nav-card { min-height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap nav-row">
+      <a class="wordmark" href="#home" aria-label="CGBS home">CGBS<small>Pune, Maharashtra</small></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+      <nav class="nav-links" id="primaryNav" aria-label="Main navigation">
+        <a href="#know-us">KNOW US</a>
+        <a href="#join-us">JOIN US</a>
+        <a href="#csr">CSR PARTNER WITH US</a>
+        <a href="#mission">ADHUNIK YUVA SAHAKAR</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Chhatrapati Gramvikas Bahuuddeshiya Sanstha</p>
+        <h1 id="heroTitle">Building stronger communities, together.</h1>
+        <p class="hero-copy">A community-focused organisation based in Pune, Maharashtra. Explore our work, get involved, and connect with the initiatives that matter to you.</p>
+        <div class="hero-stage" aria-label="CGBS logo with a gently rotating Earth">
+          <div class="orbit" aria-hidden="true"><span class="earth"></span></div>
+          <div class="logo-halo" aria-hidden="true"></div>
+          <img class="hero-logo" src="CGBS-logo-transparent.webp" alt="Chhatrapati Gramvikas Bahuuddeshiya Sanstha official logo" width="174" height="174" fetchpriority="high">
+          <svg class="umbrella" viewBox="0 0 100 90" aria-hidden="true">
+            <path d="M8 43 Q50 -1 92 43 Q80 39 70 48 Q60 39 50 48 Q40 39 30 48 Q19 39 8 43Z" fill="#e1b654"/>
+            <path d="M50 43 V74 Q50 85 61 80" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+            <path d="M50 43 L50 73" stroke="#fff" stroke-width="2" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="hero-actions">
+          <a class="pill primary" href="#join-us">Explore ways to participate <span aria-hidden="true">→</span></a>
+          <a class="pill" href="#initiatives">Discover initiatives</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="pathwaysTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Explore CGBS</p>
+          <h2 id="pathwaysTitle">Four ways to connect</h2>
+          <p class="lead">Choose a section to explore its information and available pathways.</p>
+        </div>
+        <div class="nav-cards">
+          <a class="nav-card" href="#know-us"><span>01 / ORGANISATION</span><h3>Know Us</h3><p>Our purpose, focus areas and activities.</p></a>
+          <a class="nav-card" href="#join-us"><span>02 / PARTICIPATE</span><h3>Join Us</h3><p>Find a registration pathway that fits you.</p></a>
+          <a class="nav-card" href="#csr"><span>03 / COLLABORATE</span><h3>CSR Partner With Us</h3><p>Explore project themes and make an enquiry.</p></a>
+          <a class="nav-card" href="#mission"><span>04 / COOPERATIVE AWARENESS</span><h3>Adhunik Yuva Sahakar Mission</h3><p>Awareness and learning programmes.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="know-us">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Know Us</p>
+          <h2>Community-led work, with people at its centre.</h2>
+          <p class="lead">CGBS is the short name for Chhatrapati Gramvikas Bahuuddeshiya Sanstha, based in Pune, Maharashtra. This overview avoids unverified impact figures and partner claims.</p>
+        </div>
+        <div class="panel-grid">
+          <article class="panel">
+            <h3>Our focus</h3>
+            <p>Creating opportunities for participation, awareness and community development across education, health, skills, inclusion and youth engagement.</p>
+            <ul class="submenu" aria-label="Know Us submenu">
+              <li><a href="#glance">CGBS at a Glance</a></li>
+              <li><a href="#gallery">Activity Gallery</a></li>
+              <li><a href="#initiatives">New Initiatives</a></li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Section guide</h3>
+            <p>Use these quick links to move directly to CGBS information and programmes.</p>
+            <ul class="submenu">
+              <li><a href="#join-us">Join Us</a></li>
+              <li><a href="#csr">CSR Project Portfolio</a></li>
+              <li><a href="#mission">Sahakar Mission</a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="glance">
+      <div class="wrap">
+        <div class="section-head center">
+          <p class="kicker">CGBS at a Glance</p>
+          <h2>Areas of engagement</h2>
+          <p class="lead">A snapshot of themes presented on this website—not a claim of measured outcomes or beneficiary totals.</p>
+        </div>
+        <div class="glance-grid">
+          <div class="glance-item"><strong>Education &amp; Awareness</strong><p>Learning opportunities and awareness programmes.</p></div>
+          <div class="glance-item"><strong>Health &amp; Inclusion</strong><p>Community health themes and access-focused support.</p></div>
+          <div class="glance-item"><strong>Youth &amp; Skills</strong><p>Youth participation, skill development and cooperation.</p></div>
+          <div class="glance-item"><strong>Women &amp; Communities</strong><p>Women’s empowerment and community development.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Activity Gallery</p>
+          <h2>Stories from the field</h2>
+          <p class="lead">Photo placeholders are shown until CGBS activity photographs are uploaded. No stock or fabricated activity photos are used.</p>
+        </div>
+        <div class="gallery" aria-label="Gallery placeholders for CGBS activity photographs">
+          <div class="photo-placeholder"><div><span aria-hidden="true">＋</span><strong>Activity photo placeholder</strong><small>Replace with an approved CGBS photo</small></div></div>
+          <div class="photo-placeholder"><div><span aria-hidden="true">＋</span><strong>Activity photo placeholder</strong><small>Replace with an approved CGBS photo</small></div></div>
+          <div class="photo-placeholder"><div><span aria-hidden="true">＋</span><strong>Activity photo placeholder</strong><small>Replace with an approved CGBS photo</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="initiatives">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">New Initiatives</p>
+          <h2>Programmes to explore</h2>
+          <p class="lead">Initiative descriptions below reflect the information provided for this website.</p>
+        </div>
+        <div class="initiatives">
+          <article class="initiative">
+            <span class="number">INITIATIVE 01</span>
+            <h3>Free Artificial Limb Replacement &amp; Rehabilitation Support</h3>
+            <p>Support initiative described as being in collaboration with BVP. Please contact CGBS directly for eligibility, schedule and programme details.</p>
+            <a href="#join-us">Explore participation options →</a>
+          </article>
+          <article class="initiative">
+            <span class="number">INITIATIVE 02</span>
+            <h3>Adhunik Yuva Sahakar Mission</h3>
+            <p>An awareness mission featuring school, college and youth awareness, Sahakar Bharati – Amrut Manthan, and book distribution programmes.</p>
+            <a href="#mission">Explore the mission →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="join-us">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Join Us</p>
+          <h2>Find your way to participate.</h2>
+          <p class="lead">Select a pathway, then use the interest form below. This standalone page does not transmit or store form submissions.</p>
+        </div>
+        <div class="details-list" aria-label="Join Us submenu">
+          <details id="youth-registration"><summary>Youth Registration</summary><p>Register your interest in youth participation and community initiatives.</p></details>
+          <details id="athletes-registration"><summary>Athletes Registration</summary><p>Register interest related to athlete participation and support.</p></details>
+          <details id="researcher-registration"><summary>Researcher Registration</summary><p>Share your interest in research and community-focused learning.</p></details>
+          <details id="limb-support"><summary>Free Artificial Limb Replacement Support</summary><p>Enquire about the support initiative. Eligibility and delivery details should be confirmed with CGBS.</p></details>
+          <details id="skill-development"><summary>Skill Development</summary><p>Register interest in skill development opportunities.</p></details>
+          <details id="women-empowerment"><summary>Women Empowerment</summary><p>Register interest in women’s empowerment programmes.</p></details>
+          <details id="volunteer-registration"><summary>Volunteer Registration</summary><p>Share your interest in volunteering with CGBS.</p></details>
+        </div>
+        <div style="height:24px"></div>
+        <form class="form-box" id="joinForm">
+          <h3>Participation interest form</h3>
+          <p class="form-note">Demo form only: information entered here stays in your browser and is not sent to CGBS.</p>
+          <div class="form-grid">
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <label class="full">Area of interest
+              <select name="interest" required>
+                <option value="">Choose a pathway</option>
+                <option>Youth Registration</option><option>Athletes Registration</option>
+                <option>Researcher Registration</option><option>Artificial Limb Support</option>
+                <option>Skill Development</option><option>Women Empowerment</option><option>Volunteer Registration</option>
+              </select>
+            </label>
+            <label class="full">Message<textarea name="message" placeholder="Optional"></textarea></label>
+            <div class="full"><button class="submit" type="submit">Review interest</button><p class="form-status" id="joinStatus" role="status" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="csr">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">CSR Partner With Us</p>
+          <h2>Explore project themes for collaboration.</h2>
+          <p class="lead">This section describes areas of interest only. No CSR partner names or commitments are implied.</p>
+        </div>
+        <div class="card-grid" aria-label="CSR submenu">
+          <article class="feature-card" id="csr-portfolio"><span class="tag">Portfolio</span><h3>CSR Project Portfolio</h3><p>Discuss project concepts and community priorities with CGBS.</p></article>
+          <article class="feature-card" id="csr-education"><span class="tag">Theme</span><h3>Education</h3><p>Education and awareness opportunities.</p></article>
+          <article class="feature-card" id="csr-health"><span class="tag">Theme</span><h3>Health</h3><p>Health and inclusion-focused project themes.</p></article>
+          <article class="feature-card" id="csr-tribal"><span class="tag">Theme</span><h3>Tribal Development</h3><p>Community development themes with a tribal focus.</p></article>
+          <article class="feature-card" id="csr-women"><span class="tag">Theme</span><h3>Women Empowerment</h3><p>Opportunities focused on women’s empowerment.</p></article>
+          <article class="feature-card" id="csr-skills"><span class="tag">Theme</span><h3>Skill Development</h3><p>Skills and livelihood-related project themes.</p></article>
+        </div>
+        <div style="height:24px"></div>
+        <form class="form-box" id="csr-enquiry">
+          <h3>CSR Enquiry</h3>
+          <p class="form-note">Demo form only: this page has no server or configured contact destination, so submissions are not sent.</p>
+          <div class="form-grid">
+            <label>Contact name<input name="name" autocomplete="name" required></label>
+            <label>Organisation<input name="organisation" autocomplete="organization" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <label>Project theme
+              <select name="theme" required><option value="">Choose a theme</option><option>Education</option><option>Health</option><option>Tribal Development</option><option>Women Empowerment</option><option>Skill Development</option></select>
+            </label>
+            <label class="full">Enquiry<textarea name="message" required></textarea></label>
+            <div class="full"><button class="submit" type="submit">Review enquiry</button><p class="form-status" id="csrStatus" role="status" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section white" id="mission">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Adhunik Yuva Sahakar Mission</p>
+          <h2>Awareness, learning and cooperation.</h2>
+          <p class="lead">Explore the mission’s programme areas. Contact CGBS for current schedules and participation details.</p>
+        </div>
+        <div class="details-list" aria-label="Adhunik Yuva Sahakar Mission submenu">
+          <details id="amrut-manthan"><summary>Sahakar Bharati – Amrut Manthan</summary><p>Programme area listed for the Adhunik Yuva Sahakar Mission.</p></details>
+          <details id="school-awareness"><summary>School Awareness</summary><p>Awareness programming for school communities.</p></details>
+          <details id="college-awareness"><summary>College Awareness</summary><p>Awareness programming for college communities.</p></details>
+          <details id="youth-awareness"><summary>Youth Awareness</summary><p>Youth-focused awareness programming.</p></details>
+          <details id="book-distribution"><summary>Book Distribution Programme</summary><p>Book distribution programme listed under the mission.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <div><strong>Chhatrapati Gramvikas Bahuuddeshiya Sanstha (CGBS)</strong><p>Pune, Maharashtra</p></div>
+      <p>Website information is provided for general awareness. Please confirm programme details directly with CGBS.</p>
+      <p><a href="#home">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <div class="floaters" aria-label="Quick actions">
+    <a id="whatsappShare" href="https://api.whatsapp.com/send?text=CGBS%20-%20Chhatrapati%20Gramvikas%20Bahuuddeshiya%20Sanstha" target="_blank" rel="noopener noreferrer" aria-label="Share CGBS using WhatsApp">WhatsApp</a>
+    <button type="button" data-dialog="chatDialog">Chat</button>
+    <button type="button" class="donate" data-dialog="donateDialog">Donate</button>
+  </div>
+
+  <dialog id="chatDialog" aria-labelledby="chatTitle">
+    <h2 id="chatTitle">Contact CGBS</h2>
+    <p>A verified phone number, email address, or chat service was not provided for this website. Please use an official CGBS contact channel when available.</p>
+    <button class="dialog-close" type="button">Close</button>
+  </dialog>
+  <dialog id="donateDialog" aria-labelledby="donateTitle">
+    <h2 id="donateTitle">Support CGBS</h2>
+    <p>No verified donation URL or payment details were provided. To protect donors, this page does not collect payment information. Please donate only through a confirmed official CGBS channel.</p>
+    <button class="dialog-close" type="button">Close</button>
+  </dialog>
+
+  <script>
+    (() => {
+      const menuToggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("primaryNav");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      nav.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          nav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.querySelectorAll("[data-dialog]").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.getElementById(button.dataset.dialog).showModal();
+        });
+      });
+
+      document.querySelectorAll("dialog").forEach((dialog) => {
+        dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+      });
+
+      const pageUrl = window.location.href;
+      const shareText = encodeURIComponent("Explore Chhatrapati Gramvikas Bahuuddeshiya Sanstha (CGBS): " + pageUrl);
+      document.getElementById("whatsappShare").href = "https://api.whatsapp.com/send?text=" + shareText;
+
+      const setupDemoForm = (formId, statusId, message) => {
+        const form = document.getElementById(formId);
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) return;
+          document.getElementById(statusId).textContent = message;
+          form.reset();
+        });
+      };
+
+      setupDemoForm("joinForm", "joinStatus", "Your browser validated this demo form. Nothing was sent or saved.");
+      setupDemoForm("csr-enquiry", "csrStatus", "Your browser validated this demo form. Nothing was sent or saved.");
+    })();
+  </script>
+</body>
+  </html>
